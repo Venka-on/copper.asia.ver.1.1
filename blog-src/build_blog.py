@@ -54,7 +54,8 @@ def make(meta_title,desc,canon,og_type,content,ld,depth,image=None):
          '<meta content="summary_large_image" name="twitter:card"/><meta content="%s" name="twitter:title"/><meta content="%s" name="twitter:description"/>'
          '<meta content="%s" name="twitter:image"/>')%(esc(meta_title),esc(desc),canon,og_type,img,esc(meta_title),esc(desc),img)
     add+=''.join('<script type="application/ld+json">\n'+json.dumps(o,indent=2,ensure_ascii=False)+'\n</script>' for o in ld)
-    s=s.replace('</head>',add+'</head>',1)
+    hreflang='<link rel="alternate" hreflang="en-SG" href="%s"/>'%esc(canon)
+    s=s.replace('</head>',hreflang+add+'</head>',1)
     s=s.replace('action="https://copper.asia/cms/Blog"','action="%s"'%canon)
     pat=re.compile(r'<div class="row"><div align="center" class="col-lg-12 col-md-12 col-sm-12">\s*<h1>\s*Updates</h1>.*?(<div class="hDiv">)',re.S)
     assert pat.search(s),'shell block not found'
