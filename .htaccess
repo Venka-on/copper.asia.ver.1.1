@@ -5,3 +5,9 @@ RewriteRule ^cms/Brands/?$ /cms/Blog [R=301,L]
 RewriteRule ^home/?$ / [R=301,L]
 RewriteCond %{REQUEST_FILENAME}.html -f
 RewriteRule ^(.+?)/?$ $1.html [END]
+
+<IfModule mod_headers.c>
+  <FilesMatch "\.(?:css|js|woff2?|ttf|otf|eot|svg|png|jpe?g|gif|webp|avif)$">
+    Header set Cache-Control "public, max-age=31536000"
+  </FilesMatch>
+</IfModule>

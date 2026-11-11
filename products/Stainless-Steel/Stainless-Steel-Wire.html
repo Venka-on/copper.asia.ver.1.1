@@ -105,13 +105,15 @@ if (typeof(Sys) === 'undefined') throw new Error('ASP.NET Ajax client-side frame
             });
         </script>
 <div id="loading" style="display: none;">
-<img alt="Loading" src="../../images/ajax-loader.gif"/>
+<img alt="Loading" height="85" src="../../images/ajax-loader.gif" width="85"/>
 </div>
 <script type="text/javascript">
             // Use for partial rendering error message
             // Create EndRequest handler for update panel
             /** for script **/
-            Sys.WebForms.PageRequestManager.getInstance().add_endRequest(EndRequestHandler);
+            if (Sys.WebForms && Sys.WebForms.PageRequestManager) {
+                Sys.WebForms.PageRequestManager.getInstance().add_endRequest(EndRequestHandler);
+            }
             function EndRequestHandler(sender, args) {
                 // If there is an unhandled error
                 if (args.get_error() != undefined) {
@@ -176,7 +178,7 @@ if (typeof(Sys) === 'undefined') throw new Error('ASP.NET Ajax client-side frame
 <div id="ctl00_panelHeaderMobWeb">
 <header>
 <div class="header_wrapper">
-<div class="logo02"><a href="/"><img alt="Teck Leong Industries Pte Ltd" border="0" src="../../images/logo07.png"/></a></div>
+<div class="logo02"><a href="/"><img alt="Teck Leong Industries Pte Ltd" border="0" height="78" src="../../images/logo07.png" width="198"/></a></div>
 <nav>
 <div class="toggle"></div>
 <div class="nav_overlay"></div>
@@ -187,16 +189,16 @@ if (typeof(Sys) === 'undefined') throw new Error('ASP.NET Ajax client-side frame
 <li><a href="../../products">Products</a></li>
 <li><a href="../../cms/Locate-Us" target="_top">Locate Us</a></li>
 <li><a href="../../cms/Blog" target="_top">Blog</a></li>
-<li><a href="../../cms/Enquiry">Enquiry <img alt="enquiry icon" border="0" class="pull-right" src="../../images/enquiry_icon.png"/>
+<li><a href="../../cms/Enquiry">Enquiry <img alt="enquiry icon" border="0" class="pull-right" height="12" src="../../images/enquiry_icon.png" width="19"/>
 </a></li>
-<li><a href="../../UploadedImg/pdf/teckleong_terms.pdf" target="blank">Terms of Sales <img alt="sales icon" border="0" class="pull-right" src="../../images/sales_icon.png"/>
+<li><a href="../../UploadedImg/pdf/teckleong_terms.pdf" target="blank">Terms of Sales <img alt="sales icon" border="0" class="pull-right" height="13" src="../../images/sales_icon.png" width="9"/>
 </a></li>
 <li style="margin-left:-10px;">
 <div id="toggle_pc" style="padding-top:10px;">
-<span id="overlay-menu">Search <img alt="Search" border="0" class="pull-right" src="../../images/search_icon.png"/></span>
+<span id="overlay-menu">Search <img alt="Search" border="0" class="pull-right" height="12" src="../../images/search_icon.png" width="12"/></span>
 </div>
 <div class="search_div icon_dropdown">
-<a class="search_link" href="javascript:void(0)"><img alt="Search" border="0" src="../../images/search_icon.png"/></a>
+<a class="search_link" href="javascript:void(0)"><img alt="Search" border="0" height="12" src="../../images/search_icon.png" width="12"/></a>
 <div class="dropdown">
 <div class="search_box">
 <div id="ctl00_panelSearch">
@@ -225,7 +227,7 @@ if (typeof(Sys) === 'undefined') throw new Error('ASP.NET Ajax client-side frame
 </div>
 <!-- end for mobile header-->
 <!--end of header -->
-<div id="ctl00_maincontent">
+<div id="ctl00_maincontent" role="main">
 <div class="row">
 <script>
         function LoadScript() {
@@ -279,7 +281,7 @@ if (typeof(Sys) === 'undefined') throw new Error('ASP.NET Ajax client-side frame
 </div>
 <div align="center" class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
 <div class="prodimg">
-<img alt="Stainless Steel Wire" border="0" id="ctl00_ContentPlaceHolder1_imgProd" src="../../UploadedImg/Product/1458637075_IMG_0446%20%20SS%20wire%20R_bg.jpg"/>
+<img alt="Stainless Steel Wire" border="0" fetchpriority="high" height="162" id="ctl00_ContentPlaceHolder1_imgProd" src="../../UploadedImg/Product/1458637075_IMG_0446%20%20SS%20wire%20R_bg.jpg" width="217"/>
 </div>
 <br/>
 <a class="sendEnquiry" href="../../Enquiry">Send Enquiry</a>    
@@ -307,7 +309,7 @@ if (typeof(Sys) === 'undefined') throw new Error('ASP.NET Ajax client-side frame
 </div>
 <!--footer -->
 <div class="clear">
-<img alt="" height="1" src="../../images/spacer.gif"/>
+<img alt="" height="1" src="../../images/spacer.gif" width="1"/>
 </div>
 <footer>
 <div class="brands">
@@ -322,22 +324,22 @@ if (typeof(Sys) === 'undefined') throw new Error('ASP.NET Ajax client-side frame
 <div class="row">
 <div align="center" class="col-lg-3 col-md-3 col-sm-3 col-xs-3 col-xxs-12 c_padright valign">
 <a href="https://www.bansooncheong.com/" target="_blank">
-<img alt="Ban Soon Cheong logo" border="0" class="img-responsive" src="../../images/logo_bsc.png"/>
+<img alt="Ban Soon Cheong logo" border="0" class="img-responsive" height="102" src="../../images/logo_bsc.png" width="108"/>
 </a>
 </div>
 <div align="center" class="col-lg-3 col-md-3 col-sm-3 col-xs-3 col-xxs-12 c_padboth valign">
 <a href="https://www.advancestorage.sg/" target="_blank">
-<img alt="Advance Storage logo" border="0" class="img-responsive" src="../../images/advance_storage.jpg"/>
+<img alt="Advance Storage logo" border="0" class="img-responsive" height="35" src="../../images/advance_storage.jpg" width="150"/>
 </a>
 </div>
 <div align="center" class="col-lg-3 col-md-3 col-sm-3 col-xs-3 col-xxs-12 c_padboth valign">
 <a href="https://lead.asia/" target="_blank">
-<img alt="Eurometalli logo" border="0" class="img-responsive" src="../../images/euro_logo1.png"/>
+<img alt="Eurometalli logo" border="0" class="img-responsive" height="50" src="../../images/euro_logo1.png" width="152"/>
 </a>
 </div>
 <div align="center" class="col-lg-3 col-md-3 col-sm-3 col-xs-3 col-xxs-12 c_padboth valign">
 <a href="https://www.radiationcontrol.sg/" target="_blank">
-<img alt="Radiation Control (Asia Pacific) logo" border="0" class="img-responsive" src="../../images/radiation_logo.png"/>
+<img alt="Radiation Control (Asia Pacific) logo" border="0" class="img-responsive" height="50" src="../../images/radiation_logo.png" width="165"/>
 </a>
 </div>
 </div>
@@ -377,9 +379,11 @@ if (typeof(Sys) === 'undefined') throw new Error('ASP.NET Ajax client-side frame
 <script type="text/javascript">
 //<![CDATA[
 Sys.Application.initialize();
-Sys.Application.add_init(function() {
-    $create(AjaxControlToolkit.Animation.UpdatePanelAnimationBehavior, {"OnUpdated":"{\"AnimationName\":\"Sequence\",\"AnimationChildren\":[{\"AnimationName\":\"ScriptAction\",\"Script\":\"Unloading();\",\"AnimationChildren\":[]}]}","OnUpdating":"{\"AnimationName\":\"ScriptAction\",\"Script\":\"Loading();\",\"AnimationChildren\":[]}","id":"ctl00_ContentPlaceHolder1_UpdatePanelAnimationExtender1"}, null, null, $get("ctl00_ContentPlaceHolder1_updatPanelProdlist"));
-});
+if (Sys.WebForms && Sys.WebForms.PageRequestManager) {
+    Sys.Application.add_init(function() {
+        $create(AjaxControlToolkit.Animation.UpdatePanelAnimationBehavior, {"OnUpdated":"{\"AnimationName\":\"Sequence\",\"AnimationChildren\":[{\"AnimationName\":\"ScriptAction\",\"Script\":\"Unloading();\",\"AnimationChildren\":[]}]}","OnUpdating":"{\"AnimationName\":\"ScriptAction\",\"Script\":\"Loading();\",\"AnimationChildren\":[]}","id":"ctl00_ContentPlaceHolder1_UpdatePanelAnimationExtender1"}, null, null, $get("ctl00_ContentPlaceHolder1_updatPanelProdlist"));
+    });
+}
 //]]>
 </script>
 </form>
