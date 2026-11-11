@@ -40,6 +40,7 @@ def relprefix(s,pre):
     return re.sub(r'\b(href|src|action)="([^"]*)"',r,s)
 def make(meta_title,desc,canon,og_type,content,ld,depth,image=None):
     s=shell
+    s=re.sub(r'<link\b(?=[^>]*\bhreflang=)[^>]*>\s*','',s,flags=re.I)
     if depth==2: s=relprefix(s,'../')
     s=re.sub(r'<title>.*?</title>','<title>%s</title>'%esc(meta_title),s,count=1,flags=re.S)
     s=re.sub(r'<meta[^>]+name="description"[^>]*/>','<meta name="description" content="%s"/>'%esc(desc),s,count=1)
@@ -52,7 +53,8 @@ def make(meta_title,desc,canon,og_type,content,ld,depth,image=None):
          '<meta content="summary_large_image" name="twitter:card"/><meta content="%s" name="twitter:title"/><meta content="%s" name="twitter:description"/>'
          '<meta content="%s" name="twitter:image"/>')%(esc(meta_title),esc(desc),canon,og_type,img,esc(meta_title),esc(desc),img)
     add+=''.join('<script type="application/ld+json">\n'+json.dumps(o,indent=2,ensure_ascii=False)+'\n</script>' for o in ld)
-    hreflang='<link rel="alternate" hreflang="en-SG" href="%s"/>'%esc(canon)
+    hreflang=''.join('<link rel="alternate" hreflang="%s" href="%s">\n'%(lang,esc(canon))
+                     for lang in ('en-SG','en-MY','id-ID','x-default'))
     s=s.replace('</head>',hreflang+add+'</head>',1)
     s=s.replace('action="https://copper.asia/cms/Blog"','action="%s"'%canon)
     pat=re.compile(r'<div class="row"><div align="center" class="col-lg-12 col-md-12 col-sm-12">\s*<h1>\s*Updates</h1>.*?(<div class="hDiv">)',re.S)
