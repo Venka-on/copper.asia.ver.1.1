@@ -42,6 +42,6 @@ Confirm these figures against the current ASTM B88 table and our available-sizes
 
 ## Copper pipe from a Singapore stockist
 
-Teck Leong Industries lists [ASTM B88 Type K copper pipe](@products/Copper-Pipe-&-Copper-Tube/ASTM-B88-Standard-Copper-Pipe/Copper-Pipe--ASTM-B88-Type-K) and [ASTM B88 Type L copper pipe](@products/Copper-Pipe-&-Copper-Tube/ASTM-B88-Standard-Copper-Pipe/Copper-Pipe--ASTM-B88-Type-L). You can browse the full [ASTM B88 standard copper pipe range](@products/Copper-Pipe-&-Copper-Tube/ASTM-B88-Standard-Copper-Pipe), download the [Type K available sizes sheet](@UploadedImg/files/COPPER%20PIPE%20TYPE%20K%20available%20sizes.pdf), or see our other [copper pipe and copper tube](@products.html) options. If you need a type or size that is not listed, ask us.
+Teck Leong Industries lists [ASTM B88 Type K copper pipe](@products/Copper-Pipe-&-Copper-Tube/ASTM-B88-Standard-Copper-Pipe/Copper-Pipe--ASTM-B88-Type-K) and [ASTM B88 Type L copper pipe](@products/Copper-Pipe-&-Copper-Tube/ASTM-B88-Standard-Copper-Pipe/Copper-Pipe--ASTM-B88-Type-L). You can browse the full [ASTM B88 standard copper pipe range](@products/Copper-Pipe-&-Copper-Tube/ASTM-B88-Standard-Copper-Pipe), download the [Type K available sizes sheet](@UploadedImg/files/COPPER%20PIPE%20TYPE%20K%20available%20sizes.pdf), or see our other [copper pipe and copper tube](@products) options. If you need a type or size that is not listed, ask us.
 
 Ready to order? [Send us an enquiry](@cms/Enquiry) with the type, size and quantity you need, and we will reply with availability and a quote.

@@ -24,13 +24,11 @@ def parse(path):
         if k not in meta: raise SystemExit('%s: missing "%s"'%(path,k))
     meta['body']=m.group(2); return meta
 def atlink(m,pre):
-    u=m.group(1)
+    u=re.sub(r'\.html(?=([?#]|$))','',m.group(1),flags=re.I)
     if u.startswith('#'): return m.group(0)
-    last=u.split('/')[-1]
-    if '.' not in last: u+='.html'
     return m.group(0).split('(')[0]+'('+pre+u+')'
 def md2html(body,pre):
-    body=re.sub(r'\]\(@([^)]+)\)',lambda m:']('+pre+m.group(1)+('' if '.' in m.group(1).split('/')[-1] else '.html')+')',body)
+    body=re.sub(r'\]\(@([^)]+)\)',lambda m:']('+pre+re.sub(r'\.html(?=([?#]|$))','',m.group(1),flags=re.I)+')',body)
     return markdown.markdown(body,extensions=['tables','sane_lists'])
 def fmt(d): return datetime.date.fromisoformat(d).strftime('%-d %B %Y')
 def esc(x): return H.escape(x,quote=True)
@@ -72,15 +70,15 @@ for i,p in enumerate(posts):
     body=md2html(p['body'],'../../')
     others=[o for o in posts if o['slug']!=p['slug']][:3]
     rel=''
-    if others: rel='<div class="blog-related"><h2>More from the blog</h2><ul>'+''.join('<li><a href="%s.html">%s</a></li>'%(o['slug'],esc(o['h1'])) for o in others)+'</ul></div>'
+    if others: rel='<div class="blog-related"><h2>More from the blog</h2><ul>'+''.join('<li><a href="%s">%s</a></li>'%(o['slug'],esc(o['h1'])) for o in others)+'</ul></div>'
     hero=''
     if img:
         assert os.path.exists(os.path.join(ROOT,img)),'image not found: '+img
         hero='<img class="blog-hero" src="../../%s" alt="%s"/>'%(img,esc(p.get('image_alt',p['h1'])))
     content=('<div class="row"><div class="col-lg-12 col-md-12 col-sm-12 blog-wrap">'
-      '<div class="breadcrumb">&gt; <a href="../../products.html">Products</a> | <a href="../Blog.html">Blog</a> | <a class="page_active" href="#">%s</a></div>'
+      '<div class="breadcrumb">&gt; <a href="../../products">Products</a> | <a href="../Blog">Blog</a> | <a class="page_active" href="#">%s</a></div>'
       '<article class="blog-post"><h1>%s</h1><p class="blog-meta">Published %s &middot; %s</p>%s%s</article>%s'
-      '<p><a href="../Blog.html">&larr; Back to the blog</a></p></div></div>')%(esc(p['h1']),esc(p['h1']),fmt(p['date']),ORG,hero,body,rel)
+      '<p><a href="../Blog">&larr; Back to the blog</a></p></div></div>')%(esc(p['h1']),esc(p['h1']),fmt(p['date']),ORG,hero,body,rel)
     ld=[{"@context":"https://schema.org","@type":"BlogPosting","headline":p['h1'],"description":p['description'],
          "datePublished":p['date'],"dateModified":p.get('modified',p['date']),"mainEntityOfPage":url,
          "image":[SITE+'/'+img] if img else [LOGO],"author":{"@type":"Organization","name":ORG,"url":SITE+'/'},
@@ -90,7 +88,7 @@ for i,p in enumerate(posts):
     open(os.path.join(ROOT,'cms','Blog',p['slug']+'.html'),'w',encoding='utf-8').write(page)
 # ---- index
 assert 30<=len(IDX_TITLE)<=60 and 110<=len(IDX_DESC)<=160
-cards=''.join('<div class="blog-card"><h2><a href="Blog/%s.html">%s</a></h2><p class="blog-meta">%s</p><p>%s</p><p><a href="Blog/%s.html">Read more</a></p></div>'
+cards=''.join('<div class="blog-card"><h2><a href="Blog/%s">%s</a></h2><p class="blog-meta">%s</p><p>%s</p><p><a href="Blog/%s">Read more</a></p></div>'
     %(p['slug'],esc(p['h1']),fmt(p['date']),esc(p['description']),p['slug']) for p in posts) or '<p>New articles coming soon.</p>'
 content=('<div class="row"><div class="col-lg-12 col-md-12 col-sm-12 blog-wrap"><h1>Blog</h1>'
   '<p class="blog-sub">Guides on copper, brass, bronze, shim plates and lead sheet from Teck Leong Industries.</p>%s</div></div>')%cards
