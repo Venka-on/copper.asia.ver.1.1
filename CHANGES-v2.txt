@@ -22,3 +22,10 @@ v2.2 (27 Oct 2026, hidden text + Singapore rewrite)
 - 54 titles/descriptions rewritten (30-60 / 110-160 characters). About 14 pages had descriptions belonging to a different page (e.g. Brass Union Tees, Lead Ingots, EDM Graphite): fixed.
 - Audit result: 0 titles/descriptions out of range, 0 duplicate titles, 0 broken links, 0 invalid JSON-LD.
 Still open: no H1 on index.html and products.html (design decision); enquiry form backend; live crawl diff; verify technical figures in copy against your catalogue.
+
+v2.3 (13 Nov 2026, SEO follow-up)
+- Removed misleading en-MY and id-ID hreflang links from HTML pages and the blog template; retained en-SG and x-default.
+- Added a visible H1 to products.html. All 289 published pages now have exactly one H1.
+- Corrected "Alluminium Alloy" spelling in five product pages and the alloy listing while retaining existing URL slugs and canonicals.
+- Refined title, og:title, and Twitter title tags for Copper Caps, Bronze 90 Elbows, and C83600 Lead Bronze to reflect Singapore supplier intent.
+- Left homepage copy and product facts unchanged.
